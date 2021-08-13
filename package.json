@@ -1,0 +1,24 @@
+{
+  "name": "bootleg-hl",
+  "version": "1.0.0",
+  "description": "A simple HTML syntax highlighter for use in my personal writing",
+  "main": "dist/bundle.js",
+  "scripts": {
+    "build": "webpack",
+    "dev": "webpack --config webpack.dev.js"
+  },
+  "keywords": [
+    "syntax",
+    "highlighting"
+  ],
+  "contributors": [
+    "William Lewis <wjlewis2@protonmail.com>"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "ts-loader": "^9.2.5",
+    "typescript": "^4.3.5",
+    "webpack": "^5.50.0",
+    "webpack-cli": "^4.7.2"
+  }
+}

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Bootleg HL</title>
+    <meta charset="utf-8" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      html {
+        font-size: 16px;
+      }
+
+      code {
+        font-family: 'Fira Code', monospace;
+      }
+
+      .punc {
+        color: #654735;
+      }
+
+      .kw {
+        color: #c14a4a;
+      }
+
+      .op {
+        color: #c35e0a;
+      }
+
+      .ident {
+        color: #654735;
+      }
+
+      .type {
+        color: #45707a;
+      }
+
+      .num {
+        color: #945e80;
+      }
+
+      .string {
+        color: #b47109;
+      }
+
+      .comment {
+        color: #928374;
+        font-style: italic;
+      }
+
+      .unknown {
+        text-decoration: underline;
+        text-decoration-style: wavy;
+        text-decoration-color: #c14a4a;
+      }
+    </style>
+  </head>
+  <body>
+    <pre><code class="hl-haskell">
+module Quux.MyModule (map) where
+
+import qualified Quux.Shoo as S hiding (map)
+
+-- Mapping over lists
+map :: (a -> b) -> [a] -> [b]
+map _ []     = []
+map f (x:xs) = f x : map f xs
+
+class Monoid a where
+  empty :: a
+
+  (<>) :: a -> a -> a
+
+-- Some strings
+-- several comments
+s1 :: String
+s1 = "\"this is a test\""
+
+n1 :: Int
+n1 = 4212.3
+
+case x of
+  Just x -> x
+  Nothing -> error "This is a message"
+    </code></pre>
+
+    <pre><code class="hl-racket">
+#lang racket
+
+;; Some racket code
+(define (fact n)
+  (if (zero? n)
+      1
+      (* n (fact (- n 1)))))
+
+;; Even and odd
+(define (even? n)
+  (if (zero? n)
+      #t
+      (odd? (- n 1))))
+
+(define (odd? n)
+  (if (zero? n)
+      #f
+      (even? (- n 1))))
+
+"a string to test"
+
+(define (eval e r)
+  (match e
+    [(? number?) e]
+    [(? symbol?) (r e)]
+    [`(if ,a ,b ,c)
+     (let ([v (eval a r)])
+       (eval (if v b c) r))]
+    [else (error (format "Unrecognized expression: ~a" e))]))
+    </code></pre>
+
+    <script src="../dist/bundle.js"></script>
+  </body>
+</html>
