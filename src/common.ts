@@ -58,14 +58,14 @@ export class Peekable {
     }
   }
 
-  eatString() {
+  eatString(quote = '"') {
     let escapeNext = false;
     while (!this.isDone) {
       const c = this.peek();
       if (c == '\\' && !escapeNext) {
         escapeNext = true;
         this.pop();
-      } else if (c == '"' && !escapeNext) {
+      } else if (c == quote && !escapeNext) {
         this.pop();
         return;
       } else if (c === '\n' || c === '\r') {
@@ -78,7 +78,7 @@ export class Peekable {
   }
 
   eatInlineComment() {
-    this.popWhile(c => !'\n\r'.includes(c));
+    this.popWhile(c => !this.isDone && !'\n\r'.includes(c));
   }
 
   eatWhitespace() {

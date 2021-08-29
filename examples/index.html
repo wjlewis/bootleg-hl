@@ -11,6 +11,7 @@
     <style>
       html {
         font-size: 16px;
+        background-color: #f7f4e3;
       }
 
       code {
@@ -58,6 +59,47 @@
     </style>
   </head>
   <body>
+    <pre><code class="hl-typescript">
+// src/state/DragSubject.ts
+
+export class DragSubject {
+  private type: Type;
+  private mouseOffset?: Vec;
+
+  static None(): DragSubject {
+    const out = new DragSubject();
+    out.type = Type.None;
+    return out;
+  }
+
+  static Ball(mouseOffset: Vec): DragSubject {
+    const out = new DragSubject();
+    out.type = Type.Ball;
+    out.mouseOffset = mouseOffset;
+    return out;
+  }
+
+  match&lt;A&gt;(handlers: MatchHandlers&lt;A&gt;): A {
+    switch (this.type) {
+      case Type.None:
+        return handlers.none();
+      case Type.Ball:
+        return handlers.ball(this.mouseOffset as Vec);
+    }
+  }
+}
+
+enum Type {
+  None = 'None',
+  Ball = 'Ball',
+}
+
+interface MatchHandlers&lt;A&gt; {
+  none: () => A;
+  ball: (mouseOffset: Vec) => A;
+}
+    </code></pre>
+
     <pre><code class="hl-haskell">
 module Quux.MyModule (map) where
 
