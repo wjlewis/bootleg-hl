@@ -1,6 +1,6 @@
 {
   "name": "bootleg-hl",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "A simple HTML syntax highlighter for use in my personal writing",
   "main": "dist/bundle.js",
   "scripts": {

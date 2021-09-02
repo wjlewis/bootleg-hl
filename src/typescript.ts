@@ -113,4 +113,7 @@ const keywords = [
   'yield',
   'async',
   'await',
+  // Added because they look better highlighted
+  'constructor',
+  '=>',
 ];
